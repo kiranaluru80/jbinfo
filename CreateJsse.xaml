@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:CustomEntry="clr-namespace:ConEd.JSSE.Client.DependencyServices;assembly=ConEd.JSSE.Client"
+    xmlns:local="clr-namespace:ConEd.JSSE.Client.Render;assembly=ConEd.JSSE.Client" Title="Con Edison" Icon="contacts.png" x:Class="ConEd.JSSE.Client.Views.CreateJsse" BackgroundColor="White">
+    <ContentPage.Content>
+        <ScrollView>
+            <RelativeLayout>
+                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width,Factor=1.0}" Spacing="10" Padding="10,0,10,5">
+                  <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Spacing="5" Padding="0,0,0,5" VerticalOptions ="FillAndExpand">
+
+                    <!-- Create JSSE and Job info -->
+                    <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Padding="0,10,0,5">
+                        <Label Text="Job Information * " HorizontalOptions="StartAndExpand" TextColor="Black" BackgroundColor="Transparent"/>
+                    </StackLayout>
+                    <!-- Create JSSE and Job info -->
+                        
+                         <!--Observer Stack -->
+                        <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Spacing="5" Padding="0">
+                            <Label Text = "Observer" FontSize ="15" HorizontalOptions ="StartAndExpand"/>
+                            <Frame Padding ="5" CornerRadius ="0" HorizontalOptions="FillAndExpand" VerticalOptions="Fill" OutlineColor="Silver" HasShadow="false">
+                                <StackLayout Orientation ="Horizontal" HorizontalOptions ="FillAndExpand">
+                                   <CustomEntry:LoginCustomEntry x:Name="obRef" HorizontalOptions="FillAndExpand" Text="{Binding ObserverName}" VerticalOptions="Fill" Placeholder="Enter Observer Name" />
+                                   <Button x:Name="pickeref" Image="contacts.png" HeightRequest="30" WidthRequest="30"/>
+                                </StackLayout>
+                            </Frame>
+                        </StackLayout>
+                        <!--Observer Stack -->
+                        
+                    <!-- union safety Anonymously -->
+                    <StackLayout Orientation="Horizontal" Spacing = "10" HorizontalOptions="FillAndExpand">
+                        <Label x:Name="observerRef" FontSize ="15" HorizontalOptions="Start" VerticalOptions="Center" Text=" Union Safety Anonymously" VerticalTextAlignment ="Center" TextColor="Black"/>
+                        <Switch x:Name="observerswitch" HorizontalOptions="Start" VerticalOptions="StartAndExpand" IsToggled="false"/>
+                    </StackLayout>
+                    <!-- union safety Anonymously -->
+                    
+                      <!--Observee Name Stack-->
+                        <StackLayout Margin ="0,10,0,0" Orientation="Vertical" HorizontalOptions="FillAndExpand" Spacing="5" Padding="0">
+                           <Label Text = "Observee(s) *" FontSize ="15" HorizontalOptions ="StartAndExpand"/>
+                            <Frame CornerRadius ="0" Padding ="5" HorizontalOptions="FillAndExpand" VerticalOptions="Fill" OutlineColor="Silver" HasShadow="false">
+                               <StackLayout Orientation ="Horizontal" HorizontalOptions ="FillAndExpand">
+                                 <CustomEntry:LoginCustomEntry x:Name="obveeRef" IsEnabled="true" HorizontalOptions="FillAndExpand" Text="{Binding ObserveeName}" VerticalOptions="Fill" Placeholder="Enter Observee Name"/>
+                                 <Button x:Name="observeepickeref" Command="{Binding ObserveePickerCommand}" Image="contacts.png" HeightRequest="30" WidthRequest="30"/>
+                               </StackLayout>
+                            </Frame>
+                        </StackLayout>
+                        <!--Observee Name Stack-->
+
+                        <!--Observer Anonymously switch -->
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                            <Label x:Name="observeeRef" HorizontalOptions="Start" VerticalOptions="Center" Text=" Observee Anonymously" FontSize ="15" TextColor="Black"/>
+                            <Switch x:Name="observeeswitch" HorizontalOptions="Start" VerticalOptions="StartAndExpand" IsToggled="false"/>
+                        </StackLayout>
+                        <!--Observer Anonymously switch -->
+
+                        <!-- Date picker Stack -->
+                        <StackLayout Margin ="0,10,0,0" Orientation="Vertical" HorizontalOptions="FillAndExpand" Spacing="5" Padding="0">
+                         <Label Text = "JSSE date *" FontSize ="15" HorizontalOptions ="StartAndExpand"/>
+                        <Frame CornerRadius ="0" HorizontalOptions="FillAndExpand" VerticalOptions="Start" OutlineColor="Silver" HasShadow="false" Padding="5">
+                            <StackLayout Orientation ="Horizontal" HorizontalOptions ="FillAndExpand">
+                              <local:CustomDatePicker x:Name="dateRef" HorizontalOptions="FillAndExpand" VerticalOptions="Fill"/>
+                              <Button HeightRequest ="30" WidthRequest ="30" BackgroundColor ="Red"/>
+                            </StackLayout>
+                        </Frame>
+                        </StackLayout>
+                        <!-- Date picker Stack -->
+
+                        <!-- Region Stack -->
+                        <StackLayout Margin ="0,10,0,0" Orientation="Vertical" HorizontalOptions="FillAndExpand" Spacing="5" Padding="0">
+                        <Label Text = "Region *" FontSize ="15" HorizontalOptions ="StartAndExpand"/>
+                        <Frame CornerRadius ="0" Padding ="5" HorizontalOptions="FillAndExpand" VerticalOptions="Start" OutlineColor="Silver" HasShadow="false">
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                <local:CustomPickerRender  Title="Select Region" x:Name="regionRef" TextColor="Black" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" VerticalOptions="Fill" />
+                                <Image HeightRequest ="30" WidthRequest ="30" HorizontalOptions="EndAndExpand" VerticalOptions="Center" Source="dropdownimage" x:Name="dropdownAction"/>
+                            </StackLayout>
+                        </Frame>
+                       </StackLayout>
+                        <!-- Region Stack -->
+
+                        <!--Location Stack-->
+                        <StackLayout Margin ="0,10,0,0" Orientation="Vertical" HorizontalOptions="FillAndExpand" Spacing="5" Padding="0">
+                        <Label Text = "Location *" FontSize ="15" HorizontalOptions ="StartAndExpand"/>
+                        <Frame HorizontalOptions="FillAndExpand" VerticalOptions="Start" OutlineColor="Silver" CornerRadius ="0" HasShadow="false" Padding="5">
+                           <StackLayout Orientation ="Horizontal" HorizontalOptions ="FillAndExpand">
+                            <Editor FontSize ="15" x:Name="locationRef" HorizontalOptions="FillAndExpand" VerticalOptions="Fill" HeightRequest="60"/>
+                            <Button x:Name ="locationBtnRef" HorizontalOptions ="End" VerticalOptions ="Center" BackgroundColor ="Red" HeightRequest ="30"/>
+                           </StackLayout>
+                        </Frame>
+                            </StackLayout>
+                      <!--Location Stack-->
+
+                        
+
+                        <Frame x:Name="majorgrpframe" IsVisible="false" HorizontalOptions="FillAndExpand" VerticalOptions="Start" OutlineColor="Transparent" HasShadow="false" Padding="5">
+                            <StackLayout x:Name="stackmajr" Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Spacing="10" Padding="10,5,10,5">
+                                <local:CustomPickerRender Title="Select Major group" ItemsSource="{Binding majorgroups}" SelectedItem="{Binding Selectgroup}" x:Name="majorgroupRef" TextColor="Black" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" VerticalOptions="EndAndExpand" />
+                                <Image HorizontalOptions="EndAndExpand" VerticalOptions="Center" Source="dropdownimage" x:Name="majordropdownAction">
+                                </Image>
+                            </StackLayout>
+                        </Frame>
+
+                        <Frame x:Name="organisationframe" IsVisible="false" HorizontalOptions="FillAndExpand" VerticalOptions="Start" OutlineColor="Transparent" HasShadow="false" Padding="5">
+                            <StackLayout x:Name="stackorg" Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Spacing="10" Padding="10,5,10,5">
+                                <local:CustomPickerRender Title="Select organizations" ItemsSource="{Binding organizations}" SelectedItem="{Binding Selectorganisation}" x:Name="organizationRef" TextColor="Black" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" VerticalOptions="EndAndExpand" />
+                                <Image HorizontalOptions="EndAndExpand" VerticalOptions="Center" Source="dropdownimage" x:Name="orgdropdownAction">
+                                </Image>
+                            </StackLayout>
+                        </Frame>
+
+
+
+                        <!-- Proceed and back Button -->
+                        <Button Margin ="15" x:Name="nextRef" Text="Proceed" TextColor="White" HorizontalOptions="FillAndExpand" BackgroundColor="#004E82"/>
+                        <Button Margin ="15,0,15,0" x:Name="backRef" Text="Back" TextColor="White" HorizontalOptions="FillAndExpand" BackgroundColor="#004E82"/>
+                        <Button Margin ="15" Text="Back" TextColor="White" HorizontalOptions="FillAndExpand" BackgroundColor="#004E82"/>
+                        <!-- Proceed and back Button -->
+                        
+                    </StackLayout>
+                </StackLayout>
+                <!-- popup view for observer-->
+                <StackLayout x:Name="observerPickerLayoutRef" Padding="10" BackgroundColor="#90000000" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="false" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width,Factor=1.0}" RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height,Factor=1.0}">
+                    <StackLayout Padding="20" BackgroundColor="White" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Orientation="Vertical">
+                        <Label Text="Select Observer Here">
+                        </Label>
+                        <StackLayout Margin="20">
+                            <SearchBar x:Name="ObserversearchRef" />
+                            <ListView x:Name="ObserverlistView" IsVisible="false" ItemsSource="{Binding OrgRelatedData}">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <ViewCell.View>
+                                                <StackLayout Orientation="Vertical" HorizontalOptions="StartAndExpand" VerticalOptions="Center">
+                                                    <Label Text="{Binding FullName}" HorizontalOptions="FillAndExpand" />
+                                                </StackLayout>
+                                            </ViewCell.View>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </StackLayout>
+                        <Button x:Name="OkRef" Text="OK" HeightRequest="40" WidthRequest="70" TextColor="White" BackgroundColor="Blue">
+                        </Button>
+                        <Button x:Name="Cancelref" Text="Cancel" HeightRequest="40" WidthRequest="70" TextColor="White" BackgroundColor="Blue">
+                        </Button>
+                    </StackLayout>
+                </StackLayout>
+                <!-- popupview end -->
+                <!-- popup view for Observee-->
+                <StackLayout x:Name="observeePickerPopLayoutRef" Padding="10" BackgroundColor="#90000000" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="{Binding DoneIsAvailable}" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width,Factor=1.0}" RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height,Factor=1.0}">
+                    <StackLayout Padding="20" BackgroundColor="White" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Orientation="Vertical">
+                        <Label Text="Select Observeee Here">
+                        </Label>
+                        <Frame HorizontalOptions="FillAndExpand" VerticalOptions="Start" OutlineColor="Blue" HasShadow="false" Padding="5">
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Spacing="10" Padding="10,5,10,5">
+                                <local:CustomPickerRender Title="Select Organization" x:Name="PickerOrgRef" TextColor="Black" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" VerticalOptions="EndAndExpand" />
+                                <Image HorizontalOptions="EndAndExpand" VerticalOptions="Center" Source="dropdownimage">
+                                </Image>
+                            </StackLayout>
+                        </Frame>
+                        <StackLayout Margin="20">
+                            <SearchBar x:Name="searchRef" />
+                            <ListView x:Name="listView" IsVisible="false" ItemsSource="{Binding OrgRelatedData}">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <ViewCell.View>
+                                                <StackLayout Orientation="Vertical" HorizontalOptions="StartAndExpand" VerticalOptions="Center">
+                                                    <Label Text="{Binding FullName}" HorizontalOptions="FillAndExpand" />
+                                                </StackLayout>
+                                            </ViewCell.View>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </StackLayout>
+                        <Button x:Name="ObOkRef" Text="OK" HeightRequest="40" WidthRequest="70" TextColor="White" BackgroundColor="Blue">
+                        </Button>
+                        <Button x:Name="ObCancelRef" Text="Cancel" HeightRequest="40" WidthRequest="70" TextColor="White" BackgroundColor="Blue">
+                        </Button>
+                    </StackLayout>
+                </StackLayout>
+                <!-- popupview end -->
+            </RelativeLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
